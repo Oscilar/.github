@@ -129,6 +129,7 @@ jobs:
     needs: codex
     permissions:
       issues: write
+      pull-requests: read
     steps:
       - name: Upsert PR comment
         uses: actions/github-script@v7
