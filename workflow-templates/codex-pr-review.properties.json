@@ -1,0 +1,8 @@
+{
+  "name": "Codex PR Review",
+  "description": "Runs Codex on pull requests and posts review feedback as a PR comment.",
+  "iconName": "octicon check-circle",
+  "categories": [
+    "Automation"
+  ]
+}
