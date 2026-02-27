@@ -91,17 +91,21 @@ jobs:
 
             Goal: Provide a concise, high-signal review focused on correctness, security, reliability, and maintainability.
 
-            Output format (strict):
-            1. Summary
+            Output format (strict Markdown):
+            ## Summary
             Write 2-4 short paragraphs describing what changed.
             End Summary with:
             Risk: <Low|Medium|High> - <one sentence>
 
-            2. Findings
-            Group findings by severity in this exact order: P0 Blocker, P1 High, P2 Medium, P3 Nit.
-            For each finding, use this exact structure:
+            ## Findings
+            Group findings by severity in this exact order (omit empty groups):
+            ### P0 - Blocker
+            ### P1 - High
+            ### P2 - Medium
+            ### P3 - Nit
 
-            2.1 P<0|1|2|3> - <Blocker|High|Medium|Nit>: <short title>
+            For each finding, use this exact structure:
+            <short title>
 
             Location: <file:line (link if available)>
 
@@ -109,12 +113,11 @@ jobs:
 
             Recommendation: <actionable fix; include code snippet only if it clarifies>
 
-            Use 2.2, 2.3, ... for additional findings.
             If there are no findings, write exactly:
-            2. Findings
+            ## Findings
             No findings.
 
-            3. Questions
+            ## Questions
             If needed, add numbered questions:
             Q1: ...
             Q2: ...
@@ -132,7 +135,7 @@ jobs:
             - If unsure due to missing context, put it in Questions rather than guessing.
             - Highlight any changes that affect security, privacy, data handling, and backwards compatibility.
             - Check for test coverage: if behavior changed, suggest specific tests.
-            - Do not place findings outside section 2.
+            - Do not place findings outside the `## Findings` section.
             - Do not output empty severity buckets.
 
             Additional instructions from caller:
