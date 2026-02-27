@@ -92,18 +92,33 @@ jobs:
             Goal: Provide a concise, high-signal review focused on correctness, security, reliability, and maintainability.
 
             Output format (strict):
-            1) Summary (2-4 bullets): what changed + overall risk.
-            2) Findings grouped by severity in this exact order:
-               - P0 Blocker
-               - P1 High
-               - P2 Medium
-               - P3 Nit
-               - Questions (if any)
-            For each finding:
-            - Title (short)
-            - File:line (or best-effort file reference)
-            - Why it matters (1-2 sentences, concrete impact)
-            - Suggested fix (actionable; include code snippet only if it clarifies)
+            1. Summary
+            Write 2-4 short paragraphs describing what changed.
+            End Summary with:
+            Risk: <Low|Medium|High> - <one sentence>
+
+            2. Findings
+            Group findings by severity in this exact order: P0 Blocker, P1 High, P2 Medium, P3 Nit.
+            For each finding, use this exact structure:
+
+            2.1 P<0|1|2|3> - <Blocker|High|Medium|Nit>: <short title>
+
+            Location: <file:line (link if available)>
+
+            Impact: <1-2 sentences with concrete consequence>
+
+            Recommendation: <actionable fix; include code snippet only if it clarifies>
+
+            Use 2.2, 2.3, ... for additional findings.
+            If there are no findings, write exactly:
+            2. Findings
+            No findings.
+
+            3. Questions
+            If needed, add numbered questions:
+            Q1: ...
+            Q2: ...
+            If there are no questions, omit this section.
 
             Severity rubric:
             P0 Blocker: security vulnerability, secret exposure, authz/authn flaws, data loss/corruption risk, crashes, broken tests/build, severe race/concurrency bugs, backwards-incompatible change without mitigation.
@@ -117,7 +132,8 @@ jobs:
             - If unsure due to missing context, put it in Questions rather than guessing.
             - Highlight any changes that affect security, privacy, data handling, and backwards compatibility.
             - Check for test coverage: if behavior changed, suggest specific tests.
-            - If there are no items for a severity bucket, omit that bucket.
+            - Do not place findings outside section 2.
+            - Do not output empty severity buckets.
 
             Additional instructions from caller:
             ${{ inputs.additional_instructions }}
