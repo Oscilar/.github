@@ -159,7 +159,7 @@ jobs:
           script: |
             const marker = "<!-- codex-pr-review -->";
             const raw = process.env.CODEX_FINAL_MESSAGE || "";
-            const body = `${marker}\n# Review Bot\n\n${raw}`.trim();
+            const body = `${marker}\n# Review Bot\n\nThis comment is automatically updated on each push and each review run.\n\n${raw}`.trim();
 
             if (!context.payload.pull_request) {
               core.info("No pull request context; skipping feedback comment.");
