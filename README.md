@@ -17,7 +17,7 @@ When a caller repo triggers on `pull_request` (`opened`, `synchronize`, `reopene
 
 ## Setup
 
-1. Add `OPENAI_API_KEY` as an organization or repository secret.
+1. Add `CI_OPENAI_API_KEY` as an organization or repository secret.
 2. Choose visibility based on how you want to distribute workflows:
    - Reusable workflows can be hosted in a private `oscilar/.github` repo, but you must allow access from org repositories in Actions settings.
    - Workflow templates are only supported when the `oscilar/.github` repository is public.
@@ -44,7 +44,7 @@ jobs:
   codex_pr_review:
     uses: oscilar/.github/.github/workflows/codex-pr-review.yml@main
     secrets:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      CI_OPENAI_API_KEY: ${{ secrets.CI_OPENAI_API_KEY }}
 ```
 
 ## Optional inputs in caller repos
@@ -69,5 +69,5 @@ jobs:
       effort: medium
       additional_instructions: "Prioritize auth, schema migrations, and breaking API changes."
     secrets:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      CI_OPENAI_API_KEY: ${{ secrets.CI_OPENAI_API_KEY }}
 ```

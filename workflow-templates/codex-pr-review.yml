@@ -16,4 +16,4 @@ jobs:
   codex_pr_review:
     uses: oscilar/.github/.github/workflows/codex-pr-review.yml@main
     secrets:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      CI_OPENAI_API_KEY: ${{ secrets.CI_OPENAI_API_KEY }}

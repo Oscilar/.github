@@ -34,7 +34,7 @@ on:
         type: string
         default: ""
     secrets:
-      OPENAI_API_KEY:
+      CI_OPENAI_API_KEY:
         required: true
 
 concurrency:
@@ -67,7 +67,7 @@ jobs:
         id: run_codex
         uses: openai/codex-action@v1
         with:
-          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          openai-api-key: ${{ secrets.CI_OPENAI_API_KEY }}
           github-token: ${{ github.token }}
           model: ${{ inputs.model }}
           effort: ${{ inputs.effort }}
